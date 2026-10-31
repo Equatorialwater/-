@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>那什么的文游编辑器</title>
+<meta name="description" content="把故事写成卡片，连起来就是一个能玩的网页。零依赖、单文件、导出即玩。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--cyan:#4fd7f2;--amber:#e0a458;--txt:#e9eff5;--dim:#93a6b8}
+  html,body{min-height:100%}
+  body{
+    font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;
+    background:#080b10;color:var(--txt);overflow-x:hidden;
+    display:flex;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;
+  }
+  .glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none}
+  .g1{width:820px;height:820px;left:-300px;top:-340px;background:#2bb3d6;opacity:.34}
+  .g2{width:760px;height:760px;right:-300px;bottom:-340px;background:#d08a3a;opacity:.26}
+  .grid{position:fixed;inset:0;pointer-events:none;opacity:.12;
+    background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(circle at 50% 40%,rgba(0,0,0,.95),transparent 72%);
+            mask-image:radial-gradient(circle at 50% 40%,rgba(0,0,0,.95),transparent 72%);}
+  main{position:relative;z-index:2;width:100%;max-width:960px}
+  .brand{display:flex;align-items:center;gap:12px;font-size:19px;color:#cbd8e4}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}
+  .ver{font-size:13px;padding:2px 9px;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:#8fa2b4}
+  h1{margin-top:34px;font-size:56px;line-height:1.14;font-weight:800;letter-spacing:-1.4px}
+  h1 em{font-style:normal;color:var(--cyan)}
+  .lead{margin-top:20px;font-size:19px;line-height:1.75;color:#a9bccd;max-width:680px}
+  .ways{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+  @media (max-width:720px){.ways{grid-template-columns:1fr}h1{font-size:38px}body{padding:28px 18px}}
+  a.way{
+    display:block;text-decoration:none;color:inherit;padding:26px 26px 24px;border-radius:16px;
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);
+    transition:transform .16s ease,border-color .16s ease,background .16s ease;
+  }
+  a.way:hover{transform:translateY(-3px);background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.3)}
+  a.way.primary{border-color:rgba(79,215,242,.45);background:linear-gradient(180deg,rgba(79,215,242,.13),rgba(79,215,242,.04))}
+  a.way.primary:hover{border-color:var(--cyan)}
+  .k{font-size:13px;letter-spacing:2px;color:#7f93a6;text-transform:uppercase}
+  .t{margin-top:10px;font-size:26px;font-weight:700;display:flex;align-items:center;gap:10px}
+  .t .go{font-size:15px;color:var(--cyan);opacity:.9}
+  .d{margin-top:10px;font-size:15px;line-height:1.7;color:#9db0c2}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:38px}
+  .fact{font-size:13px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);color:#a9bccd}
+  footer{margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#6f8496}
+</style>
+</head>
+<body>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="grid"></div>
+<main>
+  <div class="brand"><span class="dot"></span>那什么的文游编辑器<span class="ver">v1.1</span></div>
+
+  <h1>故事写成卡片<br><em>连起来就是游戏</em></h1>
+  <p class="lead">不用写代码，也不用装环境。剧情、选项、检定、战斗拆成卡片摆到画布上，连起来，导出成能双击就玩的一个 HTML 文件。</p>
+
+  <div class="ways">
+    <a class="way primary" href="play.html">
+      <div class="k">先玩玩看</div>
+      <div class="t">直接玩内置教程 <span class="go">→</span></div>
+      <div class="d">《A氏的新手教程》，14 张卡片的小故事。剧情、选项、检定、随机、战斗都会走一遍，三分钟通关，不用注册。</div>
+    </a>
+    <a class="way" href="editor.html">
+      <div class="k">自己做</div>
+      <div class="t">打开编辑器 <span class="go">→</span></div>
+      <div class="d">从空白工程开始写自己的故事，或者直接在教程上改。工程会自动存在你这台电脑的浏览器里。</div>
+    </a>
+  </div>
+
+  <div class="facts">
+    <span class="fact">零依赖 · 单文件</span>
+    <span class="fact">导出即玩</span>
+    <span class="fact">10 种卡片</span>
+    <span class="fact">数据只存本地</span>
+  </div>
+
+  <footer>
+    <span>没有服务器，不收集任何东西；你的工程只存在自己的浏览器里，换设备请用「导出工程」带走。</span>
+    <span>ALLESI / NEXUS-TEXT</span>
+  </footer>
+</main>
+</body>
+</html>
